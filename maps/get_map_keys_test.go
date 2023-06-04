@@ -1,6 +1,10 @@
-package maps
+package maps_test
 
-import "testing"
+import (
+	"testing"
+
+	"github.com/bylexus/go-stdlib/maps"
+)
 
 type getMapKeysTestdata struct {
 	inMap map[string]string
@@ -23,7 +27,7 @@ func TestGetMapKeys(t *testing.T) {
 	}
 
 	for _, data := range testdata {
-		keys := GetMapKeys(&data.inMap)
+		keys := maps.GetMapKeys(&data.inMap)
 		if len(keys) != len(data.keys) {
 			t.Errorf("nr of keys wrong in %#v\n", data.inMap)
 		}
