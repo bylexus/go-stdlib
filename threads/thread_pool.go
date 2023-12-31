@@ -59,13 +59,9 @@ func (tp *ThreadPool) Start() {
 // Enqueues a job by providing a JobFn function.
 func (tp *ThreadPool) AddJobFn(jobFn JobFn) {
 	tp.lock.Lock()
+	defer tp.lock.Unlock()
 	if tp.isRunning {
-		// unlock before enqueuing - the channel could block,
-		// but we don't want the lock to be held for too long:
-		tp.lock.Unlock()
 		tp.job_channel <- jobFn
-	} else {
-		tp.lock.Unlock()
 	}
 }
 
