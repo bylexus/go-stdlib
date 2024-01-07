@@ -15,6 +15,11 @@ and data structures.
 ## Available tools
 
 * `Router` offers a `http.Handler` which supports better routing than the default `http.ServeMux` routing mechanism
+* http middlewares
+	* `http.middleware.ClientLimit`: Limits the number of concurrent requests
+	* `http.middleware.Delay`: Delays the processing of a single request for a given amount of time
+	* `http.middleware.RequestLog`: Logs the request to the given logger in a pre-defined format
+	* `http.middleware.HtmlContent`: Adds the 'Content-Type: text/html' content type header to the output
 
 ## Run tests
 
