@@ -11,3 +11,26 @@ and data structures.
 * `slices.Filter` filters a slice by a given predicate function
 * `slices.InSlice` checks if a given value is in a slice
 * `strings.SplitRe` splits a string by a regex
+
+## Available tools
+
+* `Router` offers a `http.Handler` which supports better routing than the default `http.ServeMux` routing mechanism
+
+## Run tests
+
+Use the prepared shell script `run-tests.sh` to run the tests.
+
+If you want to run specific tests, call them either by single package:
+
+```sh
+go test -v github.com/bylexus/go-stdlib/threads
+```
+
+or by using the `...` sub-directory matcher:
+
+```sh
+# all:
+go test -v ./...
+# single subdir:
+go test -v ./http/...
+```
