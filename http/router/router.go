@@ -1,6 +1,7 @@
 package router
 
 import (
+	"context"
 	"net/http"
 
 	"github.com/bylexus/go-stdlib/log"
@@ -16,6 +17,10 @@ const METHOD_HEAD = "HEAD"
 const METHOD_TRACE = "TRACE"
 const METHOD_CONNECT = "CONNECT"
 const METHOD_ANY = "ANY"
+
+type MatchedRouteKeyType string
+
+const MatchedRouteKey MatchedRouteKeyType = "bylexus/http/router/MatchedRoute"
 
 // The Router type implements a http.Handler that is capable of a more sophisticated routing
 // than the routing mechanism of the standard library. For example, it supports placeholders and
@@ -42,6 +47,9 @@ func (r *Router) ServeHTTP(w http.ResponseWriter, req *http.Request) {
 	}
 	r.logger.Debug("Route found for %s: %s", req.URL.Path, matchedRoute.Route.Pattern)
 	r.logger.Debug("Route params: %#v", matchedRoute.Params)
+	// inject MatchedRoute into context:
+	ctx := context.WithValue(req.Context(), MatchedRouteKey, matchedRoute)
+	req = req.WithContext(ctx)
 	(*matchedRoute.Route.Handler).ServeHTTP(w, req)
 }
 
@@ -115,4 +123,12 @@ func (r *Router) findRoute(req *http.Request) *MatchedRoute {
 		}
 	}
 	return nil
+}
+
+func GetMatchedRoute(ctx context.Context) MatchedRoute {
+	matchedRoute, ok := ctx.Value(MatchedRouteKey).(*MatchedRoute)
+	if !ok {
+		return MatchedRoute{}
+	}
+	return *matchedRoute
 }

@@ -3,6 +3,7 @@ package router
 import (
 	"io"
 	"net/http"
+	"net/http/httptest"
 	"net/url"
 	"reflect"
 	"testing"
@@ -216,5 +217,40 @@ func TestFindRouteByMethodAndURL(t *testing.T) {
 				t.Errorf("Route params do not match: should be: %s,  but is %s", *data.expectedParams, matchedRoute.Params)
 			}
 		}
+	}
+}
+
+func TestRouterInjectsMatchedRouteToContext(t *testing.T) {
+	// setup:
+	l := log.NewSeverityLogger(io.Discard)
+	r := NewRouter(&l)
+	var routeParams RouteParams
+
+	dummyHandler := http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		matchedRoute := GetMatchedRoute(r.Context())
+		routeParams = matchedRoute.Params
+	})
+
+	// Define route with some parameters
+	r.Get("/api/{:entity}/{:id|[0-9]+}/{:urlTail|.*}", dummyHandler)
+
+	// define request:
+	req := &http.Request{
+		Method: METHOD_GET,
+		URL:    &url.URL{Path: "/api/foo_123/345/more/things/to/come"},
+	}
+	// execute:
+	rr := httptest.NewRecorder()
+	r.ServeHTTP(rr, req)
+
+	// verify:
+	if routeParams["entity"] != "foo_123" {
+		t.Errorf("Route param for 'entity' do not match: should be: %s,  but is %s", "foo_123", routeParams["entity"])
+	}
+	if routeParams["id"] != "345" {
+		t.Errorf("Route param for 'id' do not match: should be: %s,  but is %s", "345", routeParams["id"])
+	}
+	if routeParams["urlTail"] != "more/things/to/come" {
+		t.Errorf("Route param for 'urlTail' do not match: should be: %s,  but is %s", "more/things/to/come", routeParams["urlTail"])
 	}
 }
