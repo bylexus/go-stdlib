@@ -1,4 +1,4 @@
-package maps
+package emaps
 
 // Returns a slice of keys of the given map.
 func GetMapKeys[T comparable, U any](m *map[T]U) []T {

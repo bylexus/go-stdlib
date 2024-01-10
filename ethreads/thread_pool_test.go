@@ -1,4 +1,4 @@
-package threads_test
+package ethreads_test
 
 import (
 	"io"
@@ -6,20 +6,20 @@ import (
 	"testing"
 	"time"
 
-	"github.com/bylexus/go-stdlib/log"
-	"github.com/bylexus/go-stdlib/threads"
+	"github.com/bylexus/go-stdlib/elog"
+	"github.com/bylexus/go-stdlib/ethreads"
 )
 
 func TestThreadPoolWithJobFn(t *testing.T) {
-	logger := log.NewSeverityLogger(io.Discard)
-	tp := threads.NewThreadPool(3, &logger)
+	logger := elog.NewSeverityLogger(io.Discard)
+	tp := ethreads.NewThreadPool(3, &logger)
 	results := make([]int, 0)
 	mu := sync.Mutex{}
 
 	tp.Start()
 	for i := 1; i <= 3; i++ {
 		localI := i
-		tp.AddJobFn(func(id threads.ThreadId) {
+		tp.AddJobFn(func(id ethreads.ThreadId) {
 			mu.Lock()
 			defer mu.Unlock()
 			results = append(results, localI)
@@ -39,14 +39,14 @@ type TestJob struct {
 	res *chan int
 }
 
-func (j *TestJob) Run(threadId threads.ThreadId) {
+func (j *TestJob) Run(threadId ethreads.ThreadId) {
 	*j.res <- int(threadId)
 	time.Sleep(time.Millisecond * 100)
 }
 
 func TestThreadPoolWithJobStruct(t *testing.T) {
-	logger := log.NewSeverityLogger(io.Discard)
-	tp := threads.NewThreadPool(3, &logger)
+	logger := elog.NewSeverityLogger(io.Discard)
+	tp := ethreads.NewThreadPool(3, &logger)
 	resultChan := make(chan int, 3)
 	results := make([]int, 0)
 

@@ -1,9 +1,9 @@
-package slices_test
+package eslices_test
 
 import (
 	"testing"
 
-	"github.com/bylexus/go-stdlib/slices"
+	"github.com/bylexus/go-stdlib/eslices"
 )
 
 type filterTestData struct {
@@ -37,7 +37,7 @@ func TestFilter(t *testing.T) {
 	}
 
 	for _, data := range tests {
-		res := slices.Filter(&data.arr, data.filterFn)
+		res := eslices.Filter(&data.arr, data.filterFn)
 		if len(res) != len(data.exp) {
 			t.Errorf("Filter(%v,%p) != %v\n", data.arr, data.filterFn, data.exp)
 		}

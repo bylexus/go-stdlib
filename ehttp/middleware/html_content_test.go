@@ -5,12 +5,14 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	"github.com/bylexus/go-stdlib/http/middleware"
+	"github.com/bylexus/go-stdlib/ehttp/middleware"
 )
 
 func TestHtmlContentMiddleware(t *testing.T) {
 	// setup: create a test handler
-	testH := middleware.HtmlContent(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {}))
+	testH := middleware.HtmlContent(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		// noop
+	}))
 
 	// serve the handler by using the http test response recorder:
 	rr := httptest.NewRecorder()

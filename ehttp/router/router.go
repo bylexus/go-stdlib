@@ -4,7 +4,7 @@ import (
 	"context"
 	"net/http"
 
-	"github.com/bylexus/go-stdlib/log"
+	"github.com/bylexus/go-stdlib/elog"
 )
 
 const METHOD_GET = "GET"
@@ -26,11 +26,11 @@ const MatchedRouteKey MatchedRouteKeyType = "bylexus/http/router/MatchedRoute"
 // than the routing mechanism of the standard library. For example, it supports placeholders and
 // regular expressions for matching part of the route.
 type Router struct {
-	logger *log.SeverityLogger
+	logger *elog.SeverityLogger
 	routes []Route
 }
 
-func NewRouter(logger *log.SeverityLogger) Router {
+func NewRouter(logger *elog.SeverityLogger) Router {
 	return Router{
 		logger: logger,
 		routes: make([]Route, 0),

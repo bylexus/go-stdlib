@@ -3,23 +3,28 @@
 This is my personal golang stdlib, containing various cross-project library functions
 and data structures.
 
+## Note on naming convention
+
+All my packages start with an "e" (e.g. for "enhanced", or "extended". Another interpretation may be "evil"?),
+to avoid confusion with the standard library, and to avoid confusion with the developer's mindset.
+
 ## Available Functions
 
-* `err.PanicOnErr` takes an error value, and, if not nil, outputs it and panics.
-* `log.SeverityLogger` implements a struct with loggers for different severities
-* `maps.GetMapKeys` returns a slice of all keys of the given map
-* `slices.Filter` filters a slice by a given predicate function
-* `slices.InSlice` checks if a given value is in a slice
-* `strings.SplitRe` splits a string by a regex
+* `eerr.PanicOnErr` takes an error value, and, if not nil, outputs it and panics.
+* `elog.SeverityLogger` implements a struct with loggers for different severities
+* `emaps.GetMapKeys` returns a slice of all keys of the given map
+* `eslices.Filter` filters a slice by a given predicate function
+* `eslices.InSlice` checks if a given value is in a slice
+* `estrings.SplitRe` splits a string by a regex
 
 ## Available tools
 
-* `Router` offers a `http.Handler` which supports better routing than the default `http.ServeMux` routing mechanism
+* `ehttp.Router` offers a `http.Handler` which supports better routing than the default `http.ServeMux` routing mechanism
 * http middlewares
-	* `http.middleware.ClientLimit`: Limits the number of concurrent requests
-	* `http.middleware.Delay`: Delays the processing of a single request for a given amount of time
-	* `http.middleware.RequestLog`: Logs the request to the given logger in a pre-defined format
-	* `http.middleware.HtmlContent`: Adds the 'Content-Type: text/html' content type header to the output
+	* `ehttp.middleware.ClientLimit`: Limits the number of concurrent requests
+	* `ehttp.middleware.Delay`: Delays the processing of a single request for a given amount of time
+	* `ehttp.middleware.RequestLog`: Logs the request to the given logger in a pre-defined format
+	* `ehttp.middleware.HtmlContent`: Adds the 'Content-Type: text/html' content type header to the output
 
 ## Run tests
 

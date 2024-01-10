@@ -1,9 +1,9 @@
-package maps_test
+package emaps_test
 
 import (
 	"testing"
 
-	"github.com/bylexus/go-stdlib/maps"
+	"github.com/bylexus/go-stdlib/emaps"
 )
 
 type getMapKeysTestdata struct {
@@ -27,7 +27,7 @@ func TestGetMapKeys(t *testing.T) {
 	}
 
 	for _, data := range testdata {
-		keys := maps.GetMapKeys(&data.inMap)
+		keys := emaps.GetMapKeys(&data.inMap)
 		if len(keys) != len(data.keys) {
 			t.Errorf("nr of keys wrong in %#v\n", data.inMap)
 		}

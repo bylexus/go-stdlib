@@ -1,9 +1,9 @@
-package slices_test
+package eslices_test
 
 import (
 	"testing"
 
-	"github.com/bylexus/go-stdlib/slices"
+	"github.com/bylexus/go-stdlib/eslices"
 )
 
 type inSliceTestData struct {
@@ -47,7 +47,7 @@ func TestInSlice(t *testing.T) {
 	}
 
 	for _, data := range tests {
-		if slices.InSlice(&data.arr, data.search) != data.exp {
+		if eslices.InSlice(&data.arr, data.search) != data.exp {
 			t.Errorf("InSlice(%#v, %s) != %t\n", data.arr, data.search, data.exp)
 		}
 	}

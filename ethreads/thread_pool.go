@@ -1,10 +1,10 @@
-package threads
+package ethreads
 
 import (
 	"io"
 	"sync"
 
-	"github.com/bylexus/go-stdlib/log"
+	"github.com/bylexus/go-stdlib/elog"
 )
 
 type ThreadId int
@@ -17,16 +17,16 @@ type ThreadPool struct {
 	threads     int
 	job_channel chan JobFn
 	wait_group  *sync.WaitGroup
-	logger      *log.SeverityLogger
+	logger      *elog.SeverityLogger
 	isRunning   bool
 	lock        *sync.Mutex
 }
 
 // NewThreadPool creates a new ThreadPool with the specified number of threads (goroutines).
 // Optionally, a log.SeverityLogger can be passed in. If not provided, a null logger will be used.
-func NewThreadPool(threads int, logger *log.SeverityLogger) ThreadPool {
+func NewThreadPool(threads int, logger *elog.SeverityLogger) ThreadPool {
 	if logger == nil {
-		l := log.NewSeverityLogger(io.Discard)
+		l := elog.NewSeverityLogger(io.Discard)
 		logger = &l
 	}
 	tp := ThreadPool{

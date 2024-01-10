@@ -8,7 +8,7 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/bylexus/go-stdlib/log"
+	"github.com/bylexus/go-stdlib/elog"
 )
 
 type findRouteTestData struct {
@@ -152,7 +152,7 @@ func findRouteByMethodAndUrlTestDataProvider() []findRouteTestData {
 
 func TestFindRouteByMethodAndURL(t *testing.T) {
 	// setup:
-	l := log.NewSeverityLogger(io.Discard)
+	l := elog.NewSeverityLogger(io.Discard)
 	r := NewRouter(&l)
 	dummyHandler := http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		// just a dummy handler - not used
@@ -222,7 +222,7 @@ func TestFindRouteByMethodAndURL(t *testing.T) {
 
 func TestRouterInjectsMatchedRouteToContext(t *testing.T) {
 	// setup:
-	l := log.NewSeverityLogger(io.Discard)
+	l := elog.NewSeverityLogger(io.Discard)
 	r := NewRouter(&l)
 	var routeParams RouteParams
 

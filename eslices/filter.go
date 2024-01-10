@@ -1,4 +1,4 @@
-package slices
+package eslices
 
 /*
 Takes a slice pointer and a predicate function, and returns

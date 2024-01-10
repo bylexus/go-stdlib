@@ -1,4 +1,4 @@
-package slices
+package eslices
 
 // Returns the first element from the given slice that matches the predicate.
 func FindFirst[T any](slice *[]T, predicate func(*T) bool) *T {

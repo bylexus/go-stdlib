@@ -1,4 +1,4 @@
-package err
+package eerr
 
 func PanicOnErr(err error) {
 	if err != nil {

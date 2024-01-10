@@ -1,9 +1,9 @@
-package slices_test
+package eslices_test
 
 import (
 	"testing"
 
-	"github.com/bylexus/go-stdlib/slices"
+	"github.com/bylexus/go-stdlib/eslices"
 )
 
 type findFirstTestData struct {
@@ -50,7 +50,7 @@ func TestFindFirst(t *testing.T) {
 	}
 
 	for _, test := range tests {
-		if slices.FindFirst(&test.arr, test.searchFn) != test.exp {
+		if eslices.FindFirst(&test.arr, test.searchFn) != test.exp {
 			t.Errorf("FindFirst(%#v, %p) != %s\n", test.arr, test.searchFn, *test.exp)
 		}
 	}

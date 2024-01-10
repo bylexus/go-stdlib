@@ -1,9 +1,9 @@
-package strings_test
+package estrings_test
 
 import (
 	"testing"
 
-	"github.com/bylexus/go-stdlib/strings"
+	"github.com/bylexus/go-stdlib/estrings"
 )
 
 func TestSplitRe(t *testing.T) {
@@ -11,7 +11,7 @@ func TestSplitRe(t *testing.T) {
 	testRe := `[,\s;]+`
 	exp := []string{"foo", "bar", "baz", "too", ""}
 
-	res, err := strings.SplitRe(testStr, testRe)
+	res, err := estrings.SplitRe(testStr, testRe)
 	if err != nil {
 		t.Errorf("split unsuccessful: %s\n", err)
 	}

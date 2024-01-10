@@ -1,4 +1,4 @@
-package slices
+package eslices
 
 // Returns true if the given value is in the slice.
 func InSlice[T comparable](slice *[]T, val T) bool {
