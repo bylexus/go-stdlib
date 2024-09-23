@@ -1,0 +1,10 @@
+[2024-09-23T10:39:12.527514+02:00] main.DEBUG: Executing statement: DELETE FROM public.beratungsfall WHERE id = ? (parameters: {"1":220807}, types: {"1":1}) {"type":"DATABASE","server":"172.18.0.4","client":"172.18.0.1"}
+[2024-09-23T10:39:12.559476+02:00] main.DEBUG: Committing transaction {"type":"DATABASE","server":"172.18.0.4","client":"172.18.0.1"}
+[2024-09-23T10:39:12.597480+02:00] main.DEBUG: Beginning transaction {"type":"DATABASE","server":"172.18.0.4","client":"172.18.0.1"}
+[2024-09-23T10:39:12.602080+02:00] main.DEBUG: Executing query: SELECT BfTermin.* FROM public.v_bf_termin BfTermin WHERE beratungsfall_id = 219953 ORDER BY termin_datum ASC,zeit_beginn ASC   {"type":"DATABASE","server":"172.18.0.4","client":"172.18.0.1"}
+[2024-09-23T10:39:12.623491+02:00] main.DEBUG: Executing query: SELECT Leistung.* FROM public.v_leistung Leistung WHERE termin_id=1208906 {"type":"DATABASE","server":"172.18.0.4","client":"172.18.0.1"}
+[2024-09-23T10:39:12.677130+02:00] main.DEBUG: Executing statement: DELETE FROM public.leistung WHERE id = ? (parameters: {"1":522529}, types: {"1":1}) {"type":"DATABASE","server":"172.18.0.4","client":"172.18.0.1"}
+[2024-09-23T10:39:12.682836+02:00] main.DEBUG: Executing statement: DELETE FROM public.leistung WHERE id = ? (parameters: {"1":523046}, types: {"1":1}) {"type":"DATABASE","server":"172.18.0.4","client":"172.18.0.1"}
+[2024-09-23T10:39:12.688193+02:00] main.DEBUG: Executing statement: DELETE FROM public.leistung WHERE id = ? (parameters: {"1":523045}, types: {"1":1}) {"type":"DATABASE","server":"172.18.0.4","client":"172.18.0.1"}
+[2024-09-23T10:39:12.693869+02:00] main.DEBUG: Executing statement: SELECT BfTerminProtokoll.* FROM public.v_bf_termin_protokoll BfTerminProtokoll WHERE bf_termin_id = ? (parameters: {"1":1208906}, types: {"1":2}) {"type":"DATABASE","server":"172.18.0.4","client":"172.18.0.1"}
+[2024-09-23T10:39:12.724800+02:00] main.DEBUG: Executing statement: DELETE FROM public.bf_termin_protokoll WHERE id = ? (parameters: {"1":218785}, types: {"1":1}) {"type":"DATABASE","server":"172.18.0.4","client":"172.18.0.1"}
