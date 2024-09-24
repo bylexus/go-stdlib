@@ -13,7 +13,9 @@ to avoid confusion with the standard library, and to avoid confusion with the de
 * `eerr.PanicOnErr` takes an error value, and, if not nil, outputs it and panics.
 * `elog.SeverityLogger` implements a struct with loggers for different severities
 * `emaps.GetMapKeys` returns a slice of all keys of the given map
-* `eslices.Filter` filters a slice by a given predicate function
+* `efunctional.Filter` filters a slice by a given predicate function
+* `efunctional.Map` Applies a function to each element of a slice, returning a new slice with the results.
+* `efunctional.Reduce` applies a function to each element of a slice and an accumulator value, returning a single reduced value
 * `eslices.InSlice` checks if a given value is in a slice
 * `estrings.SplitRe` splits a string by a regex
 
