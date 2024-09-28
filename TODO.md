@@ -55,5 +55,6 @@ Some ideas that come to mind:
 	* [ ] file logging
 	* [ ] cli logging
 	* [ ] combining logs (e.g. "TeeLogger", that logs to file + stdout at the same time)
+  * [ ] Output functions for colored output
 * Simple facility to run / execute external commands
 
