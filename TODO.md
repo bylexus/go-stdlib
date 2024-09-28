@@ -57,4 +57,8 @@ Some ideas that come to mind:
 	* [ ] combining logs (e.g. "TeeLogger", that logs to file + stdout at the same time)
   * [ ] Output functions for colored output
 * Simple facility to run / execute external commands
+* File processing tools:
+  * [ ] copy single file
+  * [ ] copy dir recursively
+  * [ ] dir walker / iterator with filter
 
